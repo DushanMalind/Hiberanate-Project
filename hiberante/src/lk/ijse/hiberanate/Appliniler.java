@@ -1,10 +1,14 @@
 package lk.ijse.hiberanate;
 
 import lk.ijse.hiberanate.embedded.CusName;
+import lk.ijse.hiberanate.embedded.MobilNumber;
 import lk.ijse.hiberanate.entity.Customer;
 import lk.ijse.hiberanate.util.SessionFactoryConfiguaration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Appliniler {
     public static void main(String[] args) {
@@ -18,6 +22,12 @@ public class Appliniler {
         customer.setName(cusName);
         customer.setAddress("galle");
         customer.setSalary(30000.020);
+        customer.setAge(22);
+
+        List<MobilNumber> phoneNumbers=new ArrayList<>();
+        phoneNumbers.add(new MobilNumber("MOBILE","0771251314"));
+        phoneNumbers.add(new MobilNumber("HOME","0912547891"));
+        customer.setPhoneNumbers(phoneNumbers);
 
         /*customer.setId(2L);
         customer.setName("Kamal");
