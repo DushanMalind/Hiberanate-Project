@@ -25,6 +25,7 @@ public class Customer {
     @Column(name ="Customer_age",columnDefinition = "SMALLINT")
     private int age;
 
+    @CollectionTable(name = "Customer_mobil_nos",joinColumns = @JoinColumn(name = "Customer_id"))
     private List<MobilNumber> phoneNumbers;
 
     public Customer() {
