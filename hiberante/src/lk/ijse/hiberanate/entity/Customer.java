@@ -2,8 +2,12 @@ package lk.ijse.hiberanate.entity;
 
 import lk.ijse.hiberanate.embedded.CusName;
 import lk.ijse.hiberanate.embedded.MobilNumber;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +36,11 @@ public class Customer {
 
     @Transient
     private String dob;
+
+    @CreationTimestamp
+    private Date createDate;
+    @CreationTimestamp
+    private Time time;
 
     public Customer() {
     }
