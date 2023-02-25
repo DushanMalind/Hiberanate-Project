@@ -18,6 +18,11 @@ public class Appliniler {
         customer.setAddress("mathara");
         customer.setSalary(4000.023);
 
+        customer.setId(3L);
+        customer.setName("nimal");
+        customer.setAddress("batapola");
+        customer.setSalary(20000.124);
+
         Session session=SessionFactoryConfiguaration.getInstance().getSession();
         session.save(customer);
         Transaction transaction= session.beginTransaction();

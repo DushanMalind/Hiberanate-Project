@@ -20,12 +20,9 @@ public class SessionFactoryConfiguaration {
 
     public Session getSession() throws HibernateException {
         //
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
 
-        Metadata metadata = new MetadataSources(serviceRegistry).addAnnotatedClass(Customer.class).getMetadataBuilder()
-                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build();
-
-        SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
+        SessionFactory sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build()).addAnnotatedClass(Customer.class).getMetadataBuilder()
+                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build().getSessionFactoryBuilder().build();
 
         return sessionFactory.openSession();
     }
