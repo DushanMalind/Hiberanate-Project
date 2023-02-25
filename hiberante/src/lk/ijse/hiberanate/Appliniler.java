@@ -5,5 +5,6 @@ import lk.ijse.hiberanate.util.SessionFactoryConfiguaration;
 public class Appliniler {
     public static void main(String[] args) {
         SessionFactoryConfiguaration sessionFactoryConfiguaration=new SessionFactoryConfiguaration();
+        sessionFactoryConfiguaration.getSession();
     }
 }
