@@ -13,6 +13,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class SessionFactoryConfiguaration {
 
     private static SessionFactoryConfiguaration factoryConfiguaration;
+    private SessionFactory sessionFactory;
+
+    private SessionFactoryConfiguaration(){}
 
     public static SessionFactoryConfiguaration getInstance(){
          return (null==factoryConfiguaration) ? factoryConfiguaration=new SessionFactoryConfiguaration() :factoryConfiguaration;
@@ -21,7 +24,7 @@ public class SessionFactoryConfiguaration {
     public Session getSession() throws HibernateException {
         //
 
-        SessionFactory sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build()).addAnnotatedClass(Customer.class).getMetadataBuilder()
+         sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build()).addAnnotatedClass(Customer.class).getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build().getSessionFactoryBuilder().build();
 
         return sessionFactory.openSession();
