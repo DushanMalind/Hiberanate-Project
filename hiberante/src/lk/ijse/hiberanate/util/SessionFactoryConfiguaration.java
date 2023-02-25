@@ -13,19 +13,20 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class SessionFactoryConfiguaration {
 
     private static SessionFactoryConfiguaration factoryConfiguaration;
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
-    private SessionFactoryConfiguaration(){}
+    private SessionFactoryConfiguaration(){
+        sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build()).addAnnotatedClass(Customer.class).getMetadataBuilder()
+                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build().getSessionFactoryBuilder().build();
+
+
+    }
 
     public static SessionFactoryConfiguaration getInstance(){
          return (null==factoryConfiguaration) ? factoryConfiguaration=new SessionFactoryConfiguaration() :factoryConfiguaration;
     }
 
     public Session getSession() throws HibernateException {
-        //
-
-         sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build()).addAnnotatedClass(Customer.class).getMetadataBuilder()
-                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build().getSessionFactoryBuilder().build();
 
         return sessionFactory.openSession();
     }
