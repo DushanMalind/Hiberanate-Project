@@ -1,21 +1,36 @@
 package lk.ijse.hiberanate.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lk.ijse.hiberanate.embedded.CusName;
+import lk.ijse.hiberanate.embedded.MobilNumber;
+
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
+//@Entity(name="Customer")
+@Table(name="Customer")
 public class Customer {
     @Id
+    @Column(name = "Customer_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-    private String name;
+//    @Column(name = "Customer_name")
+    private CusName name;
+    @Column(name = "Customer_address")
     private String address;
+    @Column(name = "Customer_salary")
     private double salary;
+
+    @Column(name ="Customer_age",columnDefinition = "SMALLINT")
+    private int age;
+
+    private List<MobilNumber> phoneNumbers;
 
     public Customer() {
     }
 
-    public Customer(long id, String name, String address, double salary) {
+    public Customer(long id, CusName name, String address, double salary) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -30,11 +45,11 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
+    public CusName getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(CusName name) {
         this.name = name;
     }
 
