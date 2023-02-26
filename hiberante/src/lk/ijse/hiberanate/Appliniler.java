@@ -18,10 +18,18 @@ public class Appliniler {
         Customer customer=getCustomerEntity();
         customerRepository.saveCustomer(customer);
 
-        CustomerRepository customerRepository1=new CustomerRepository();
-        Customer customer1=getCustomerEntityUpdate();
-        customerRepository1.updateCustomer(customer1);
+        /*CustomerRepository customerRepository1=new CustomerRepository();
+        Customer customer1=customerRepository1.getCustomer(1L);
+        System.out.println("Cutomer id"+customer1.getId());
 
+        customer1.setAddress("Jfnana");
+
+        boolean isUpdate = customerRepository1.updateCustomer(customer1);
+        if (isUpdate){
+            System.out.println("Customer"+customer1.getId()+"Update SusccFully");
+        }else {
+            System.out.println("Customer"+customer1.getId()+"Update not");
+        }*/
         /*Customer customer = new Customer();
         customer.setId(1L);
 
@@ -54,7 +62,17 @@ public class Appliniler {
         Transaction transaction= session.beginTransaction();
         transaction.commit();
         session.close();*/
+
+       /* CustomerRepository customerRepository3=new CustomerRepository();
+        Customer customer3=getCustomerEntity();
+        customerRepository3.delteCustomer(customer3);*/
     }
+
+
+
+
+
+
 
     private  static Customer getCustomerEntity(){
         Customer customer = new Customer();
@@ -78,25 +96,4 @@ public class Appliniler {
 
     }
 
-    private  static Customer getCustomerEntityUpdate(){
-        Customer customer = new Customer();
-        customer.setId(1L);
-
-        CusName cusName=new CusName();
-        cusName.setFirstName("Malinda");
-        cusName.setMiddleName("Dushan");
-        cusName.setLastName("Bro");
-        customer.setName(cusName);
-        customer.setAddress("batapola");
-        customer.setSalary(30000.020);
-        customer.setAge(22);
-
-        List<MobilNumber> phoneNumbers=new ArrayList<>();
-        phoneNumbers.add(new MobilNumber("MOBILE","0771251314"));
-        phoneNumbers.add(new MobilNumber("HOME","0912547891"));
-        customer.setPhoneNumbers(phoneNumbers);
-
-        return customer;
-
-    }
 }

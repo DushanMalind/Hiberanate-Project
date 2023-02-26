@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class CustomerRepository {
     
     private final Session session;
-    
+
     public CustomerRepository(){
         session= SessionFactoryConfiguaration.getInstance().getSession();
     }
@@ -44,6 +44,36 @@ public class CustomerRepository {
         }catch (Exception e){
             transaction.rollback();
             session.close();
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    public Customer getCustomer(long id){
+        try {
+
+            return session.get(Customer.class,id);
+
+            /*Customer customer=session.get(Customer.class,id);
+            return customer;*/
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            throw e;
+        }
+
+    }
+
+    public boolean delteCustomer(Customer customer){
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.delete(customer);
+            transaction.commit();
+            return true;
+        }catch (Exception e){
+            transaction.rollback();
             e.printStackTrace();
             return false;
         }

@@ -9,6 +9,10 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+
+import java.io.FileInputStream;
+import java.util.Properties;
 
 public class SessionFactoryConfiguaration {
 
@@ -16,8 +20,22 @@ public class SessionFactoryConfiguaration {
     private final SessionFactory sessionFactory;
 
     private SessionFactoryConfiguaration(){
-        sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build()).addAnnotatedClass(Customer.class).getMetadataBuilder()
-                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build().getSessionFactoryBuilder().build();
+
+        Properties properties=new Properties();
+        try {
+            properties.load(ClassLoader.getSystemClassLoader().getResourceAsStream("hibernate.properties"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        Configuration configuration = new Configuration();
+        configuration.addAnnotatedClass(Customer.class);
+        sessionFactory=configuration.mergeProperties(properties).buildSessionFactory();
+//        sessionFactory=configuration.mergeProperties(properties).addResource("mapping/Customer.hbm.xml").buildSessionFactory();
+
+
+
+        /*sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build()).addAnnotatedClass(Customer.class).getMetadataBuilder()
+                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build().getSessionFactoryBuilder().build();*/
 
 
     }
