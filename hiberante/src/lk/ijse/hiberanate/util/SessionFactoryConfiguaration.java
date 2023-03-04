@@ -32,11 +32,15 @@ public class SessionFactoryConfiguaration {
         sessionFactory=configuration.mergeProperties(properties).buildSessionFactory();*/
 //        sessionFactory=configuration.mergeProperties(properties).addResource("mapping/Customer.hbm.xml").buildSessionFactory();
 
-        Configuration configuration=new Configuration().configure().addAnnotatedClass(Customer.class);
-        sessionFactory=configuration.buildSessionFactory();
+        //addAnnotatedClass new Version
+       /* Configuration configuration=new Configuration().configure().addAnnotatedClass(Customer.class);
+        sessionFactory=configuration.buildSessionFactory();*/
+
+       // addAnnotatedClass new Version short
+        sessionFactory=new Configuration().configure().addAnnotatedClass(Customer.class).buildSessionFactory();
 
 
-
+       // addAnnotatedClass old version
         /*sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build()).addAnnotatedClass(Customer.class).getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build().getSessionFactoryBuilder().build();*/
 
