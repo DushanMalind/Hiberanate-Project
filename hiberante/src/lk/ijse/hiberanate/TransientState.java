@@ -17,8 +17,11 @@ public class TransientState {
         Customer customer=new Customer();
         customer.setAddress("Transients");
 
+
         //Persistent state
         session.persist(customer);
+
+        customer.setSalary(400000);
 
         transaction.commit();
         session.close();
