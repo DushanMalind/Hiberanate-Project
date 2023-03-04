@@ -33,7 +33,7 @@ public class CustomerRepository {
 
     }
 
-    public boolean updateCustomer(Customer customer){
+    public boolean  updateCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
 
         try {

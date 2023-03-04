@@ -18,7 +18,7 @@ public class Appliniler {
         Customer customer=getCustomerEntity();
         customerRepository.saveCustomer(customer);
 
-        /*CustomerRepository customerRepository1=new CustomerRepository();
+        CustomerRepository customerRepository1=new CustomerRepository();
         Customer customer1=customerRepository1.getCustomer(1L);
         System.out.println("Cutomer id"+customer1.getId());
 
@@ -29,7 +29,7 @@ public class Appliniler {
             System.out.println("Customer"+customer1.getId()+"Update SusccFully");
         }else {
             System.out.println("Customer"+customer1.getId()+"Update not");
-        }*/
+        }
         /*Customer customer = new Customer();
         customer.setId(1L);
 
