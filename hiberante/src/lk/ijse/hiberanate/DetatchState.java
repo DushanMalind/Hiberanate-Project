@@ -17,17 +17,21 @@ public class DetatchState {
         customer.setAddress("Galle");
         customer.setSalary(52011);
 
-        session.save(customer);
+//        session.save(customer);
+
+        transaction.commit();
+
+        session.close();
 
         CusName cusName=new CusName();
         cusName.setFirstName("1ka");
         cusName.setMiddleName("2dgg");
-        cusName.setLastName("3ffg");
+        cusName.setLastName("245655");
         customer.setName(cusName);
 
         System.out.println(customer);
 
-        session.close();
+
 
         Session session2= SessionFactoryConfiguaration.getInstance().getSession();
         Transaction transaction1=session2.beginTransaction();
