@@ -30,6 +30,7 @@ public class SessionFactoryConfiguaration {
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(Customer.class);
         sessionFactory=configuration.mergeProperties(properties).buildSessionFactory();*/
+
 //        sessionFactory=configuration.mergeProperties(properties).addResource("mapping/Customer.hbm.xml").buildSessionFactory();
 
         //addAnnotatedClass new Version
