@@ -21,7 +21,7 @@ public class SessionFactoryConfiguaration {
 
     private SessionFactoryConfiguaration(){
 
-        Properties properties=new Properties();
+       /* Properties properties=new Properties();
         try {
             properties.load(ClassLoader.getSystemClassLoader().getResourceAsStream("hibernate.properties"));
         }catch (Exception e){
@@ -29,8 +29,11 @@ public class SessionFactoryConfiguaration {
         }
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(Customer.class);
-        sessionFactory=configuration.mergeProperties(properties).buildSessionFactory();
+        sessionFactory=configuration.mergeProperties(properties).buildSessionFactory();*/
 //        sessionFactory=configuration.mergeProperties(properties).addResource("mapping/Customer.hbm.xml").buildSessionFactory();
+
+        Configuration configuration=new Configuration().configure().addAnnotatedClass(Customer.class);
+        sessionFactory=configuration.buildSessionFactory();
 
 
 
