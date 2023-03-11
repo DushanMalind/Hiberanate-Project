@@ -18,15 +18,9 @@ public class Orders {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer1 customer1;
+    private Customer customer1;
 
-    public Customer1 getCustomer1() {
-        return customer1;
-    }
 
-    public void setCustomer1(Customer1 customer1) {
-        this.customer1 = customer1;
-    }
 
 
 /////////////
@@ -47,17 +41,14 @@ public class Orders {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "orders")
     private List<OrderDeatils>orderDeatilsList=new ArrayList<>();
 
-    public List<OrderDeatils> getOrderDeatilsList() {
-        return orderDeatilsList;
-    }
-
-    public void setOrderDeatilsList(List<OrderDeatils> orderDeatilsList) {
-        this.orderDeatilsList = orderDeatilsList;
-    }
-
-
 
     public Orders() {
+    }
+
+    public Orders(long id, Timestamp orderDate, Customer customer1) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.customer1 = customer1;
     }
 
     public long getId() {
@@ -74,5 +65,13 @@ public class Orders {
 
     public void setOrderDate(Timestamp orderDate) {
         this.orderDate = orderDate;
+    }
+
+    public Customer getCustomer1() {
+        return customer1;
+    }
+
+    public void setCustomer1(Customer customer1) {
+        this.customer1 = customer1;
     }
 }

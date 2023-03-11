@@ -1,3 +1,4 @@
+/*
 package lk.ijse.hiberanate;
 
 import lk.ijse.hiberanate.entity.Customer;
@@ -21,3 +22,4 @@ public class UpdateVsMerge {
         session.close();
     }
 }
+*/

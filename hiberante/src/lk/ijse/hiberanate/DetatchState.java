@@ -1,4 +1,4 @@
-package lk.ijse.hiberanate;
+/*package lk.ijse.hiberanate;
 
 import lk.ijse.hiberanate.embedded.CusName;
 import lk.ijse.hiberanate.entity.Customer;
@@ -6,9 +6,9 @@ import lk.ijse.hiberanate.util.SessionFactoryConfiguaration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class DetatchState {
+public class DetatchState {*/
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         Session session= SessionFactoryConfiguaration.getInstance().getSession();
         Transaction transaction= session.beginTransaction();
 
@@ -43,4 +43,4 @@ public class DetatchState {
         session2.close();
 
     }
-}
+}*/

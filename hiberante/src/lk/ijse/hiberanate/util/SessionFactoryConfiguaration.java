@@ -1,22 +1,14 @@
 package lk.ijse.hiberanate.util;
 
 
-import lk.ijse.hiberanate.entity.Customer1;
+import lk.ijse.hiberanate.entity.Customer;
 import lk.ijse.hiberanate.entity.Item;
 import lk.ijse.hiberanate.entity.OrderDeatils;
 import lk.ijse.hiberanate.entity.Orders;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-
-import java.io.FileInputStream;
-import java.util.Properties;
 
 public class SessionFactoryConfiguaration {
 
@@ -42,8 +34,11 @@ public class SessionFactoryConfiguaration {
         sessionFactory=configuration.buildSessionFactory();*/
 
        // addAnnotatedClass new Version short
-        sessionFactory=new Configuration().configure().addAnnotatedClass(Customer1.class).addAnnotatedClass(Orders.class).
-                addAnnotatedClass(Item.class).addAnnotatedClass(OrderDeatils.class).buildSessionFactory();
+        sessionFactory=new Configuration().configure()
+                .addAnnotatedClass(Customer.class)
+                .addAnnotatedClass(Orders.class)
+                .addAnnotatedClass(Item.class)
+                .addAnnotatedClass(OrderDeatils.class).buildSessionFactory();
 
 
        // addAnnotatedClass old version
