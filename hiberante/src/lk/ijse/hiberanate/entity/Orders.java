@@ -2,6 +2,8 @@ package lk.ijse.hiberanate.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -25,6 +27,35 @@ public class Orders {
     public void setCustomer1(Customer1 customer1) {
         this.customer1 = customer1;
     }
+
+
+/////////////
+
+   /* @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Item>itemList=new ArrayList<>();
+
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
+    }*/
+
+
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "orders")
+    private List<OrderDeatils>orderDeatilsList=new ArrayList<>();
+
+    public List<OrderDeatils> getOrderDeatilsList() {
+        return orderDeatilsList;
+    }
+
+    public void setOrderDeatilsList(List<OrderDeatils> orderDeatilsList) {
+        this.orderDeatilsList = orderDeatilsList;
+    }
+
+
 
     public Orders() {
     }
