@@ -6,9 +6,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "order_details")
 public class OrderDeatils {
-    @Id
+   /* @Id
     @Column(name = "orderDeatils_id")
-    private long id;
+    private long id;*/
+    @EmbeddedId
+    private OrderDeatilsPK orderDeatilsPK;
     @Column(name = "order_price")
     private double price;
     @Column(name = "order_qty")
@@ -44,45 +46,5 @@ public class OrderDeatils {
 
 
 
-    public OrderDeatils() {
-    }
 
-    public OrderDeatils(long id, double price, int qty) {
-        this.id = id;
-        this.price = price;
-        this.qty = qty;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getQty() {
-        return qty;
-    }
-
-    public void setQty(int qty) {
-        this.qty = qty;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDeatils{" +
-                "id=" + id +
-                ", price=" + price +
-                ", qty=" + qty +
-                '}';
-    }
 }
