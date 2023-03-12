@@ -2,14 +2,13 @@ package lk.ijse.hiberanate.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
 import java.io.Serializable;
 
 @Embeddable
 public class OrderDeatilsPK implements Serializable {
-    @Column(name = "order-Id")
+    @Column(name = "order_Id")
     private long orderId;
 
-    @Column(name = "item_id")
+    @Column(name = "item_code")
     private long itemId;
 }

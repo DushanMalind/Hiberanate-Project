@@ -13,7 +13,7 @@ public class Appliniler {
         Session session = SessionFactoryConfiguaration.getInstance().getSession();
         Transaction transaction= session.beginTransaction();
 
-        Customer customer1=new Customer();
+       /* Customer customer1=new Customer();
         customer1.setId(1L);
         customer1.setName("Kamal");
         customer1.setAddress("Galle");
@@ -23,7 +23,7 @@ public class Appliniler {
 
         session.save(customer1);
         transaction.commit();
-        session.close();
+        session.close();*/
 
        /* CustomerRepository customerRepository=new CustomerRepository();
         Customer customer1=getCustomerEntity();
