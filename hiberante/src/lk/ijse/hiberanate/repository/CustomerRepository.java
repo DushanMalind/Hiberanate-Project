@@ -1,12 +1,13 @@
 package lk.ijse.hiberanate.repository;
 
-import lk.ijse.hiberanate.entity.Customer;
+
 import lk.ijse.hiberanate.util.SessionFactoryConfiguaration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.io.Serializable;
 
+/*
 public class CustomerRepository {
     
     private final Session session;
@@ -55,8 +56,10 @@ public class CustomerRepository {
 
             return session.get(Customer.class,id);
 
-            /*Customer customer=session.get(Customer.class,id);
-            return customer;*/
+            */
+/*Customer customer=session.get(Customer.class,id);
+            return customer;*//*
+
 
 
         }catch (Exception e){
@@ -80,3 +83,4 @@ public class CustomerRepository {
 
     }
 }
+*/

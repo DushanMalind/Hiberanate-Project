@@ -1,3 +1,4 @@
+/*
 package lk.ijse.hiberanate;
 
 import lk.ijse.hiberanate.embedded.CusName;
@@ -13,14 +14,16 @@ import java.util.List;
 public class GetVsLoad {
     public static void main(String[] args) {
 
-    /*    Session session= SessionFactoryConfiguaration.getInstance().getSession();
+    */
+/*    Session session= SessionFactoryConfiguaration.getInstance().getSession();
 
         Transaction transaction= session.beginTransaction();
 
         Customer customer=getCustomerEntity();
         session.save(customer);
         transaction.commit();
-        session.close();*/
+        session.close();*//*
+
 
 
         System.out.println("------------get");
@@ -78,3 +81,4 @@ public class GetVsLoad {
     }
 
 }
+*/

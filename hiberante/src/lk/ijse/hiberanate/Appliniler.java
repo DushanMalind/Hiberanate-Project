@@ -1,19 +1,29 @@
 package lk.ijse.hiberanate;
 
-import lk.ijse.hiberanate.embedded.CusName;
-import lk.ijse.hiberanate.embedded.MobilNumber;
+import lk.ijse.hiberanate.entity.Customer;
 
-import lk.ijse.hiberanate.entity.Customer1;
-import lk.ijse.hiberanate.repository.CustomerRepository;
 import lk.ijse.hiberanate.util.SessionFactoryConfiguaration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Appliniler {
     public static void main(String[] args) {
+
+
+        Session session = SessionFactoryConfiguaration.getInstance().getSession();
+        Transaction transaction= session.beginTransaction();
+
+       /* Customer customer1=new Customer();
+        customer1.setId(1L);
+        customer1.setName("Kamal");
+        customer1.setAddress("Galle");
+        customer1.setAge(10);
+
+
+
+        session.save(customer1);
+        transaction.commit();
+        session.close();*/
 
        /* CustomerRepository customerRepository=new CustomerRepository();
         Customer customer1=getCustomerEntity();
@@ -94,17 +104,5 @@ public class Appliniler {
 
     }*/
 
-        Session session = SessionFactoryConfiguaration.getInstance().getSession();
-        Transaction transaction= session.beginTransaction();
-
-        Customer1 customer1=new Customer1();
-        customer1.setId(1L);
-        customer1.setName("Kamal");
-        customer1.setAddress("Galle");
-        customer1.setAge(10);
-
-        session.save(customer1);
-        transaction.commit();
-        session.close();
     }
 }
