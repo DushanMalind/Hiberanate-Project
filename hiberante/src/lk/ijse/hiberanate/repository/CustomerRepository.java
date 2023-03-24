@@ -1,21 +1,23 @@
 package lk.ijse.hiberanate.repository;
 
 
+import lk.ijse.hiberanate.projection.CustomerDetailDto;
+import lk.ijse.hiberanate.entity.Customer;
 import lk.ijse.hiberanate.util.SessionFactoryConfiguaration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
-import java.io.Serializable;
+import java.util.List;
 
-/*
+
 public class CustomerRepository {
-    
+
     private final Session session;
 
     public CustomerRepository(){
         session= SessionFactoryConfiguaration.getInstance().getSession();
     }
-    
     public Long saveCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
 
@@ -34,7 +36,7 @@ public class CustomerRepository {
 
     }
 
-    public boolean  updateCustomer(Customer customer){
+    /*public boolean  updateCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
 
         try {
@@ -56,9 +58,14 @@ public class CustomerRepository {
 
             return session.get(Customer.class,id);
 
-            */
-/*Customer customer=session.get(Customer.class,id);
-            return customer;*//*
+
+
+
+
+Customer customer=session.get(Customer.class,id);
+            return customer;
+
+
 
 
 
@@ -80,7 +87,29 @@ public class CustomerRepository {
             e.printStackTrace();
             return false;
         }
-
-    }
-}
 */
+    public List<Customer>getAllCustomers(){
+        String sqlQuery="FROM Customer";
+        Query query=session.createQuery(sqlQuery);
+        List list= query.list();
+        session.close();
+        return list;
+    }
+
+    public List<Customer>getAllJPQLCustomers(){
+        String sql="SELECT C FROM Customer AS C";
+        Query query= session.createQuery(sql);
+        List list=query.list();
+        session.close();
+        return list;
+    }
+
+    public List<CustomerDetailDto>getAllCustomerProjection(){
+        String sql="SELECT new lk.ijse.hiberanate.projection.CustomerDetailDto(C.name, C.address, C.age) FROM Customer AS C";
+        Query query= session.createQuery(sql);
+        List list=query.list();
+        return list;
+    }
+
+}
+

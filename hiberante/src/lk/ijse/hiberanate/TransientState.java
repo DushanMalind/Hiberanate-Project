@@ -1,4 +1,3 @@
-/*
 package lk.ijse.hiberanate;
 
 import lk.ijse.hiberanate.entity.Customer;
@@ -22,10 +21,9 @@ public class TransientState {
         //Persistent state
         session.persist(customer);
 
-        customer.setSalary(400000);
+        customer.setAge(5);
 
         transaction.commit();
         session.close();
     }
 }
-*/

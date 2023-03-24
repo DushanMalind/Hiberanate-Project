@@ -1,4 +1,3 @@
-/*
 package lk.ijse.hiberanate;
 
 import lk.ijse.hiberanate.entity.Customer;
@@ -14,12 +13,11 @@ public class UpdateVsMerge {
 
 //        Customer customer = session.get(Customer.class, 3L);
         Customer customer = new Customer();
-        customer.setId(3);
+        customer.setId(1);
         customer.setAddress("galle");
-//        session.update(customer);
-        session.merge(customer);
+        session.update(customer);
+        /*session.merge(customer);*/
         transaction.commit();
         session.close();
     }
 }
-*/

@@ -1,10 +1,17 @@
 package lk.ijse.hiberanate;
 
+import lk.ijse.hiberanate.embedded.CusName;
+import lk.ijse.hiberanate.embedded.MobilNumber;
 import lk.ijse.hiberanate.entity.Customer;
 
+import lk.ijse.hiberanate.projection.CustomerDetailDto;
+import lk.ijse.hiberanate.repository.CustomerRepository;
 import lk.ijse.hiberanate.util.SessionFactoryConfiguaration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Appliniler {
     public static void main(String[] args) {
@@ -104,5 +111,63 @@ public class Appliniler {
 
     }*/
 
+        CustomerRepository customerRepository=new CustomerRepository();
+        Customer customer=getCustomerEntity();
+
+        customerRepository.saveCustomer(customer);
+
+        customerRepository = new CustomerRepository();
+        List<Customer> customers = customerRepository.getAllCustomers();
+        for (Customer customer1 : customers) {
+            System.out.println(customer1);
+        }
+
+        customerRepository = new CustomerRepository();
+        List<Customer> jpqlCustomers = customerRepository.getAllJPQLCustomers();
+        for (Customer customer1 : jpqlCustomers) {
+            System.out.println(customer1);
+        }
+
+        // Now this Projection works. Please refer the CustomerRepository
+        customerRepository = new CustomerRepository();
+        List<CustomerDetailDto> jpqlCustomerProj = customerRepository.getAllCustomerProjection();
+        for (CustomerDetailDto customer1 : jpqlCustomerProj) {
+            System.out.println(customer1);
+        }
+
+    }
+    private static Customer getCustomerEntity() {
+        Customer customer = new Customer();
+        // Sets Customer table's primary key
+        customer.setId(1L);
+
+        // Defines the NameIdentifier - Embeddable object data
+        CusName nameIdentifier = new CusName();
+        nameIdentifier.setFirstName("Saman");
+        nameIdentifier.setMiddleName("Perera");
+        nameIdentifier.setLastName("SurName");
+        customer.setName(String.valueOf(nameIdentifier));
+
+        // Sets the NameIdentifier object data as Name in Customer Entity
+//        customer.setName(nameIdentifier);
+
+        // Sets the customer address
+        customer.setAddress("Galle");
+        // Sets the customer salary
+//        customer.setSalary(30000.00);
+        // Sets the customer age
+        customer.setAge(22);
+
+
+        // Defines a List of MobileNo - Embeddable object data
+        List<MobilNumber> phoneNos = new ArrayList<>();
+        phoneNos.add(new MobilNumber("MOBILE", "07763483457"));
+        phoneNos.add(new MobilNumber("HOME", "0918475834758"));
+        // Sets the defined List of MobileNo - Embeddable objects
+        // as PhoneNos in Customer Entity
+//        customer.setPhoneNos(phoneNos);
+
+
+        return customer;
     }
 }
